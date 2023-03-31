@@ -2,7 +2,7 @@ import { Order, orderStore } from '../../production/models/order';
 
 const store = new orderStore();
 const test_order: Order = {
-  status: 'open',
+  status: 'active',
   user_id: '1',
 };
 const order_row: Order = {
@@ -62,8 +62,8 @@ describe('Order Model', () => {
   });
 
   it('`update()` method should update a order correctly', async () => {
-    const result = await store.update(1, 'closed');
-    updated_order_row.status = 'closed';
+    const result = await store.update(1, 'complete');
+    updated_order_row.status = 'complete';
     expect(result).toEqual(updated_order_row);
   });
 

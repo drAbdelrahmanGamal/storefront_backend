@@ -100,7 +100,7 @@ export class orderStore {
 
       const order = result.rows[0];
 
-      if (order.status !== 'open') {
+      if (order.status !== 'active') {
         throw new Error(
           `Could not add product ${productId} to order ${orderId} because order status is ${order.status}`
         );
