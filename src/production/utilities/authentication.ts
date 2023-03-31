@@ -17,6 +17,7 @@ export const verifyAuthToken = (
       res.status(401).send(err);
     }
   } else {
+    console.error('Missing authorization header');
     res.status(401).send('Missing authorization header');
   }
 };

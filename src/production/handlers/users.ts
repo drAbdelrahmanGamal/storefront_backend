@@ -78,7 +78,13 @@ const authenticate = async (req: Request, res: Response) => {
   try {
     const user = await store.authenticate(req.body.username, req.body.password);
     if (user) {
-      var token = jwt.sign({ user: user }, process.env.TOKEN_KEY as string);
+      var token = jwt.sign(
+        {
+          user_id: user.id,
+          username: user.username,
+        },
+        process.env.TOKEN_KEY as string
+      );
       res.status(200).send(token);
     } else {
       res.status(401).send('invalid username or password');
